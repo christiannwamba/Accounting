@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DefaultTemplate12.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Customer", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Contact Name
+            </th>
+            <th>Company Name
+            </th>
+            <th>Address Name
+            </th>
+            <th>State
+            </th>
+            <th>City
+            </th>
+
+            <th>Date Added
+            </th>
+            <th>Email
+            </th>
+            <th>Phone
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State.StateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

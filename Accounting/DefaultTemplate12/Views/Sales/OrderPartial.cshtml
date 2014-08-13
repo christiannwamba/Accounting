@@ -1,0 +1,104 @@
+﻿@model DefaultTemplate12.ViewModels.Sales
+<table>
+    <thead>
+        <tr>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Handled By
+            </th>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Required Date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders) {
+        <tr>
+            <td>
+                @item.Customer.ContactName
+            </td>
+            <td>
+                @item.Employee.FirstName @item.Employee.LastName
+            </td>
+            <td>
+                @item.OrderDate
+            </td>
+            <td>
+                @item.RequiredDate
+            </td>
+            <td>
+                
+                 @Html.ActionLink("Select", "Index", new { OrderID = item.OrderID})
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        @if (Model.OrderDetails != null) { 
+    <table>
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Unit Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Discount
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderDetails) {
+        <tr>
+            <td>
+                @item.Product.ProductName
+            </td>
+            <td>
+                @item.UnitPrice
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.Discount
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
