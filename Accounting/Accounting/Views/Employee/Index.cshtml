@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Accounting.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        
+        <table class="table">
+            <tr>
+                
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Date of Birth
+                </th>
+                <th>
+                    Hire Date
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                
+                <th>
+                    City
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HireDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City.CityName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+    <div class="panel-footer">
+        Total number of employees: @ViewBag.EmployeeCount
+    </div>
+</div> 
