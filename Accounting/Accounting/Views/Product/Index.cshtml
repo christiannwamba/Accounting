@@ -1,9 +1,10 @@
-﻿@model IEnumerable<Accounting.Models.Product>
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<Accounting.Models.Product>
 
 @{
     ViewBag.Title = "Index";
 }
-
+<script src="~/Scripts/angular.js"></script>
 <h2>Index</h2>
 
 <p>
@@ -85,9 +86,25 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID }) |
+            <button class="btn btn-primary salesButton" id="@item.ProductID">Sales</button>
         </td>
     </tr>
 }
 
 </table>
+
+<form>
+    <input type="text"class="form-control" value="@User.Identity.GetUserId()" />
+    <input id="salesProductId" type="text" class="form-control" value="" />
+
+</form>
+
+<script>
+    $(function () {
+        $('.salesButton').click(function () {
+            $('#salesProductId').val($('.salesButton').attr('id'));
+        })
+    })
+</script>
+

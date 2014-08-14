@@ -193,3 +193,10 @@ C:\Users\Chris Nwambe\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debu
 C:\Users\Chris Nwambe\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.EmpIDType.resources
 C:\Users\Chris Nwambe\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.remReqCityFrmEmp.resources
 C:\Users\Chris Nwambe\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.addOwnerCompany.resources
+C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.InitialCreate.resources
+C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.Initial.resources
+C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.EmpIDType.resources
+C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.remReqCityFrmEmp.resources
+C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.addOwnerCompany.resources
+C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.csproj.GenerateResource.Cache
+C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.relOrdOrddet.resources

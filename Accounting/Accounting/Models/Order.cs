@@ -9,6 +9,9 @@ namespace Accounting.Models
 {
     public class Order
     {
+        public Order() {
+            OrderDate = DateTime.Now;
+        }
         [Key]
         public int OrderID { get; set; }
         public DateTime OrderDate { get; set; }
@@ -22,6 +25,8 @@ namespace Accounting.Models
         [Required]
         public string EmployeeID { get; set; }
         public virtual Employee Employee { get; set; }
+
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
        
     }
