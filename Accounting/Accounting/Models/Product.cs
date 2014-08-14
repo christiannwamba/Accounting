@@ -25,13 +25,17 @@ namespace Accounting.Models
         public string ProductDescription { get; set; }
         public string Remarks { get; set; }
 
-        public int CategoryID { get; set; }
         [Required]
+        public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
 
-        public int SupplierID { get; set; }
         [Required]
+        public int SupplierID { get; set; }        
         public virtual Supplier Supplier { get; set; }
+
+        public Guid? OwnerID { get; set; }
+        [ForeignKey("OwnerID")]
+        public virtual OwnerCompany OwnerCompany { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 

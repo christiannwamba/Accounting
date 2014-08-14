@@ -16,8 +16,7 @@ namespace Accounting.Models
 
         //Nav. Props
         [Required]
-        public int SatteID { get; set; }
-        [Required]
+        public int SateID { get; set; }
         public virtual State State { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }

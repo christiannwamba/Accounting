@@ -19,8 +19,11 @@ namespace Accounting.Models
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 
-        public int ProductID { get; set; }
         [Required]
+        public int ProductID { get; set; }
         public virtual Product Product { get; set; }
+
+
+     
     }
 }

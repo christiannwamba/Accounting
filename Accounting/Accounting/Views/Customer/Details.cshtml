@@ -1,0 +1,94 @@
+﻿@model Accounting.Models.Customer
+
+@{
+    ViewBag.Title = Model.ContactName;
+}
+
+<h2>@Model.ContactTitle @ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @Model.ContactName
+    </div>
+    <div class="panel-body">
+
+
+        <div>
+           
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerCompany.Owner)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OwnerCompany.Owner)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CompanyName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ContactName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactTitle)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ContactTitle)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateAdded)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DateAdded)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
+    @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+    <div class="panel-footer">
+          Created: @Html.DisplayFor(model => model.DateAdded)
+    </div>
+</div>

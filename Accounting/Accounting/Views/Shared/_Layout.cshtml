@@ -17,13 +17,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("Charlesville eAccounting", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    { 
+                        <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                        
+                            
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Misceleneous <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/Category">Manage Categories</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/Supplier">Manage Suppliers</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/Country">Manage Countries</a></li>
+                                    <li><a href="/State">Manage States</a></li>
+                                    <li><a href="City">Manage Cities</a></li>
+                                </ul>
+                            </li>
+                        
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +52,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Charlesville eAccounting</p>
         </footer>
     </div>
 
@@ -42,6 +61,8 @@
     @RenderSection("scripts", required: false)
     <script>
         $('select').addClass('form-control');
+        $('input').addClass('form-control');
+        $('.removeFormCtrl').removeClass('form-control');
     </script>
 </body>
 </html>

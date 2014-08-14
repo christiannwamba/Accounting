@@ -11,7 +11,7 @@ namespace Accounting.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int EmployeeID { get; set; }
+        public string EmployeeID { get; set; }
 
         [Required]
         public string FirstName { get; set; }
@@ -42,9 +42,14 @@ namespace Accounting.Models
 
 
         //Navigation Properties
-        public int CityID { get; set; }
         [Required]
+        public int CityID { get; set; }
+        
         public virtual City City { get; set; }
+
+     
+        public virtual OwnerCompany OwnerCompany { get; set; }
+
         public virtual ICollection<Order> Order { get; set; }
 
         public string FullName

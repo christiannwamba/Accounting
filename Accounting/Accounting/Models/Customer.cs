@@ -9,6 +9,9 @@ namespace Accounting.Models
 {
     public class Customer
     {
+        public Customer() {
+            DateAdded = DateTime.Now;
+        }
         [Key]
         public int CustomerID { get; set; }
         
@@ -24,6 +27,10 @@ namespace Accounting.Models
         [DataType(DataType.EmailAddress, ErrorMessage="Invalid Email Address")]
         public string Email { get; set; }
         public DateTime DateAdded { get; set; }
+
+        public Guid? OwnerID { get; set; }
+        [ForeignKey("OwnerID")]
+        public virtual OwnerCompany OwnerCompany { get; set; }
 
         public virtual ICollection<Order> Order { get; set; }
 

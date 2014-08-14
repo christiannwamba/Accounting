@@ -23,7 +23,7 @@ namespace Accounting.Controllers
         }
 
         // GET: /Employee/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -63,7 +63,7 @@ namespace Accounting.Controllers
         }
 
         // GET: /Employee/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -91,8 +91,13 @@ namespace Accounting.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CityID = new SelectList(db.Cities, "CityID", "CityName", employee.CityID);
-            return View(employee);
+            else
+            {
+                return Content("invalid model");
+            }
+
+            //ViewBag.CityID = new SelectList(db.Cities, "CityID", "CityName", employee.CityID);
+            //return View(employee);
         }
 
         // GET: /Employee/Delete/5
