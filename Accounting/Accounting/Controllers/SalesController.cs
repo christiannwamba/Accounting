@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using Accounting.Models;
 
-namespace Accounting.Views
+namespace Accounting.Controllers
 {
     public class SalesController : Controller
     {
+        private AccountingContext db = new AccountingContext();
         //
         // GET: /Sales/
         public ActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult IndexJson() {
+            return Json(db.Customers, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -92,6 +99,15 @@ namespace Accounting.Views
             {
                 return View();
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

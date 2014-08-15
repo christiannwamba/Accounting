@@ -200,3 +200,4 @@ C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\
 C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.addOwnerCompany.resources
 C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.csproj.GenerateResource.Cache
 C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.relOrdOrddet.resources
+C:\Users\Chris Nwambe\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.relOrdOrddet.resources

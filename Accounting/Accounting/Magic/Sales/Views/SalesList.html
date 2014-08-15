@@ -1,0 +1,39 @@
+﻿<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-7">
+            {{meval}}
+            <input id="searchCust" type="text" ng-model="meval" class="form-control" />
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Contact Name</th>
+                            <th>Company Name</th>
+                            <th>ID</th>
+
+                        </tr>
+                    </thead>
+                    {{custo}}
+                    <tbody>
+                        <tr ng-repeat="cust in customers">
+                            <td>{{cust.ContactName}}</td>
+                            <td>{{cust.CompanyName}}</td>
+                            <td>{{cust.CustomerID}}</td>
+                            <td><button ng-click="getcustid()"  class="select-cust-to-sell-to" id="{{cust.CustomerID}}">ddd</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <input type="text" class="form-control" />
+            <div class="table-responsive">
+                <table class="table">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

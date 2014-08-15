@@ -6,9 +6,8 @@
 
 <h2>Orders</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<button class="btn btn-primary salesButton" id="">Sales</button>
+
 <table class="table">
     <tr>
         <th>
@@ -56,9 +55,23 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
             @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID }) |
+            
         </td>
     </tr>
 }
 
 </table>
+
+
+
+@Html.Partial("ngSalesLayout")
+
+<script>
+    $(function () {
+        $('.select-cust-to-sell-to').click(function () {
+            alert('click')
+            $('#searchCust').val($('.select-cust-to-sell-to').attr('id'))
+        })
+    })
+</script>
