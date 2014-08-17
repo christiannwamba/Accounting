@@ -23,7 +23,7 @@ namespace Accounting.Models
         public int ProductID { get; set; }
         public virtual Product Product { get; set; }
 
-        
+        public int OrderID { get; set; }
         public virtual Order Order { get; set; }
      
     }

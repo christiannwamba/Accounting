@@ -18,8 +18,83 @@ namespace Accounting.Controllers
             return View();
         }
 
-        public JsonResult IndexJson() {
-            return Json(db.Customers, JsonRequestBehavior.AllowGet);
+        public JsonResult GetCustomers()
+        {
+            var cust = from c in db.Customers select new { c.ContactName, c.CompanyName, c.CustomerID };
+            return Json(cust, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCustomerById(int id)
+        {
+            var cust = from c in db.Customers where c.CustomerID == id select new { c.ContactName, c.CompanyName, c.CustomerID };
+            return Json(cust, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetProducts()
+        {
+            var prod = from p in db.Products select new { p.ProductName, p.QuantityPerUnit, p.ReorderLevel, p.UnitInOrder, p.UnitPrice, p.UnitInStock, p.ProductID };
+            return Json(prod, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetProductById(int id)
+        {
+            var prod = from p in db.Products where p.ProductID == id select new { p.ProductName, p.QuantityPerUnit, p.ReorderLevel, p.UnitInOrder, p.UnitPrice, p.UnitInStock, p.ProductID };
+            return Json(prod, JsonRequestBehavior.AllowGet);
+        }
+
+        
+        
+
+        [HttpPost]
+        public ActionResult SaveOrder(Order inputModel)
+        {
+            string message = string.Format("Created user '{0}' in the system.", inputModel.CustomerID);
+            int orderId = 0;
+
+            try
+            {
+                db.Orders.Add(inputModel);
+                db.SaveChanges();
+                orderId = inputModel.OrderID;
+                
+            }
+            catch (Exception ex) {
+                message = ex.ToString();
+            }
+            return Json(new OrderViewModel { Message = message, OrderID = orderId });
+        }
+
+        public JsonResult RemoveOrder(int id) {
+            
+            db.Orders.Remove(db.Orders.Find(id));
+            db.SaveChanges();
+            return Json("deleted", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult SaveOrderDetail(OrderDetail inputModel)
+        {
+            string message = string.Format("Created user '{0}' in the system.", inputModel.OrderDetailID);
+            int orderId = 0;
+
+            try
+            {
+                db.OrderDetails.Add(inputModel);
+                db.SaveChanges();
+                orderId = inputModel.OrderDetailID;
+
+            }
+            catch (Exception ex)
+            {
+                message = ex.ToString();
+            }
+            return Json(new OrderViewModel { Message = message, OrderID = orderId });
+        }
+
+        public JsonResult GetOrderDetails(int id) {
+
+            var ord = from o in db.OrderDetails where o.OrderID == id select new { o.Product.ProductName, o.Quantity };
+            return Json(ord, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -99,15 +174,6 @@ namespace Accounting.Controllers
             {
                 return View();
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
