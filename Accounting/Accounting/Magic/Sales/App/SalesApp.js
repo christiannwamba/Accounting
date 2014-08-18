@@ -129,10 +129,39 @@ var SalesListCtrl = function ($scope, $location, $http) {
         $.post('Sales/SaveOrderDetail', bought, function (data) {
             alert(data.Message);
         });
+
+        $http.get('Sales/GetOrderDetails/' + $scope.OrderId).success(function (data) {
+           
+            $scope.orderDetails = data
+           $scope.$apply()
+           
+            
+        })
+
+        
     }
 
-    $http.get('Sales/GetOrderDetails/' + $scope.OrderId, function (data) {
-        $scope.orderDetails = data;
-    })
+    $scope.removeOrderDetail = function (ordDetId) {
+        $.get("Sales/RemoveOrderDetail/" + ordDetId, function () {
+            $('#Ord_' + ordDetId).fadeOut();
+        });
+
+        $scope.meval2 = "";
+        $scope.meval = "";
+    }
+
+    $scope.openPhase2 = function(){
+        $('#phase1, #phase2T').fadeOut(function () {
+            $('#phase2').fadeIn(function () { });
+        });
+    }
+
+    $scope.openPhase1 = function () {
+        $('#phase2').fadeOut(function () {
+            $('#phase1,#phase2T').fadeIn(function () { });
+        });
+    }
 }
+
+
 

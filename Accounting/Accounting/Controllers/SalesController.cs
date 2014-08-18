@@ -11,12 +11,7 @@ namespace Accounting.Controllers
     public class SalesController : Controller
     {
         private AccountingContext db = new AccountingContext();
-        //
-        // GET: /Sales/
-        public ActionResult Index()
-        {
-            return View();
-        }
+       
 
         public JsonResult GetCustomers()
         {
@@ -93,87 +88,17 @@ namespace Accounting.Controllers
 
         public JsonResult GetOrderDetails(int id) {
 
-            var ord = from o in db.OrderDetails where o.OrderID == id select new { o.Product.ProductName, o.Quantity };
+            var ord = from o in db.OrderDetails where o.OrderID == id select new { o.Product.ProductName, o.Quantity, o.OrderDetailID };
             return Json(ord, JsonRequestBehavior.AllowGet);
         }
 
-        //
-        // GET: /Sales/Details/5
-        public ActionResult Details(int id)
+        public JsonResult RemoveOrderDetail(int id)
         {
-            return View();
+
+            db.OrderDetails.Remove(db.OrderDetails.Find(id));
+            db.SaveChanges();
+            return Json("deleted", JsonRequestBehavior.AllowGet);
         }
-
-        //
-        // GET: /Sales/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Sales/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Sales/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Sales/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Sales/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Sales/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+     
     }
 }

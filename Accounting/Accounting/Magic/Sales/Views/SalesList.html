@@ -3,7 +3,7 @@
     
     
     <button class="btn btn-danger btn-xs" ng-click="removeCust(OrderId)" ng-show="meval2">Remove</button> 
-    <div class="row">
+    <div class="row" id="phase1">
         <div class="col-md-5 col-md-offset-7" id="custDiv">
                        
             
@@ -52,11 +52,11 @@
                     </thead>
 
                     <tbody>
-                        <tr id="cust_{{cust.CustomerID}}" ng-repeat="ord in orderDetails | filter:searchCustomer">
-                            <td>{{ord.ContactName}}</td>
-                            <td>{{ord.CompanyName}}</td>
+                        <tr ng-show="ord.OrderDetailID" id="Ord_{{ord.OrderDetailID}}" ng-repeat="ord in orderDetails | filter:searchOrders">
+                            <td>{{ord.ProductName}}</td>
+                            <td>{{ord.Quantity}}</td>
                             
-                            <td id="h"><button class="btn btn-primary btn-xs" ng-click="getcustid(cust.CustomerID); getcustName(cust.ContactName); removeBtn = !removeBtn" id="{{cust.CustomerID}}">Select</button></td>
+                            <td id="h"><button class="btn btn-danger btn-xs" ng-click="removeOrderDetail(ord.OrderDetailID)" id="{{ord.OrderDetailID}}">Remove</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -66,11 +66,12 @@
 
 
 
-    <div class="row">
+    <div class="row" >
         <div class="col-md-8" id="prodDiv">
-            <input type="text" class="form-control" ng-model="meval" />
-            <div class="table-responsive">
-                <table class="table">
+            
+            <div class="table-responsive" id="phase2T">
+                <input type="text" class="form-control" ng-model="meval" />
+                <table class="table" >
                     <thead>
                         <tr>
                             <th>
@@ -114,12 +115,14 @@
                                 {{prod.ReorderLevel}}
                             </td>
                             <th>
-                                <button ng-click="selectBuy(prod.ProductID)" class="btn btn-success btn-xs">Buy {{prod.ProductName}}</button>
+                                <button ng-click="selectBuy(prod.ProductID); openPhase2()" class="btn btn-success btn-xs">Buy {{prod.ProductName}}</button>
                             </th>
                         </tr>
                     </tbody>
                 </table>
-                <div ng-show="prodName">                    
+                
+            </div>
+            <div ng-show="prodName" id="phase2">                    
                     <input type="text" ng-model="prodName" class="form-control input-sm" disabled />
                     <hr />
                     <input type="text" ng-model="unitPrice" class="form-control input-sm" disabled />
@@ -130,9 +133,9 @@
                     <hr />
                     <input value="{{buyTotal()}}" type="text" class="form-control input-sm" placeholder="Total" />
                     <hr />
-                    <button class="btn btn-default btn-xs" ng-click="buy()">Buy</button>
+                    <button class="btn btn-default btn-xs" ng-click="buy(); openPhase1()">Buy</button>
                 </div>
-            </div>
         </div>
     </div>
 </div>
+

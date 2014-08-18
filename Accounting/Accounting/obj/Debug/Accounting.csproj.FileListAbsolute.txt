@@ -202,3 +202,4 @@ C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\
 C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.csprojResolveAssemblyReference.cache
 C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\bin\Accounting.dll.config
 C:\Users\CHRISTABEL\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.Ord.resources
+C:\Users\Chris Nwambe\Documents\GitHub\Accounting\Accounting\Accounting\obj\Debug\Accounting.Migrations.Ord.resources
